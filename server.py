@@ -27,7 +27,9 @@ def transcribe_audio():
         "file": ("audio.ogg", audio_data, "audio/ogg"),
     }
     data = {
-        "model": "gpt-4o-transcribe"
+        "model": "gpt-4o-audio-preview",
+        "temperature": 0,
+        "prompt": "الرجاء تقديم تفريغ دقيق خالٍ من الأخطاء وباللهجة العربية إن وجدت."
     }
 
     response = requests.post(
