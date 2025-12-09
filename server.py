@@ -6,8 +6,6 @@ app = Flask(__name__)
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-print("Loaded key:", bool(OPENAI_API_KEY))
-
 @app.route("/transcribe", methods=["POST"])
 def transcribe_audio():
     audio_url = request.json.get("url")
@@ -29,9 +27,7 @@ def transcribe_audio():
         "file": ("audio.ogg", audio_data, "audio/ogg"),
     }
     data = {
-        "model": "gpt-4o-audio-preview",
-        "temperature": 0,
-        "prompt": "الرجاء تقديم تفريغ دقيق خالٍ من الأخطاء وباللهجة العربية إن وجدت."
+        "model": "gpt-4o-transcribe"
     }
 
     response = requests.post(
