@@ -10,6 +10,8 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 def transcribe_audio():
     audio_url = request.json.get("url")
     audio_file = request.files.get("file")
+    
+print("Loaded key:", bool(OPENAI_API_KEY))
 
     if not audio_url and not audio_file:
         return jsonify({"error": "Send file or url"}), 400
